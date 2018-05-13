@@ -4,7 +4,7 @@ class Ccls < Formula
   head "https://github.com/MaskRay/ccls.git"
 
   option "with-build-debug", "Configures ccls to be built in debug mode"
-  option "without-system-libclang", "Downloading libclang during the configure process"
+  option "without-system-clang", "Downloading Clang from http://releases.llvm.org/ during the configure process"
   option "with-asan", "Compile with address sanitizers"
 
   depends_on "llvm@6" => :build
@@ -12,11 +12,11 @@ class Ccls < Formula
 
   def install
     build_type = build.with?("build-debug") ? "debug" : "release"
-    system_libclang = build.with?("system-libclang") ? "ON" : "OFF"
+    system_clang = build.with?("system-clang") ? "ON" : "OFF"
     asan = build.with?("asan") ? "ON" : "OFF"
 
     args = std_cmake_args + %W[
-        -DSYSTEM_LIBCLANG=#{system_libclang}
+        -DSYSTEM_CLANG=#{system_clang}
         -DCMAKE_BUILD_TYPE=#{build_type.capitalize}
         -DASAN=#{asan}
     ]
