@@ -28,4 +28,8 @@ class Ccls < Formula
     system "cmake", *args, "-B#{build_type}", "-H."
     system "cmake", "--build", "#{build_type}" , "--target", "install"
   end
+
+  test do
+    system "ccls", "--test-unit"
+  end
 end
