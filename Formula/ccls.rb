@@ -1,9 +1,15 @@
 class Ccls < Formula
   desc "C/C++ language server"
   homepage "https://github.com/MaskRay/ccls"
-  url "https://github.com/MaskRay/ccls.git",
-    :tag => "0.20180913",
-    :revision => "56c6ec43dfd87ed2e44418b8d172307d87327a64"
+  if MacOS.version <= :el_capitan
+    url "https://github.com/MaskRay/ccls.git",
+        :tag => "0.20180812",
+        :revision => "06aa25233567ae16a58a6f5237aacfd9e02aa29d"
+  else
+    url "https://github.com/MaskRay/ccls.git",
+        :tag => "0.20180913",
+        :revision => "56c6ec43dfd87ed2e44418b8d172307d87327a64"
+  end
   head "https://github.com/MaskRay/ccls.git"
 
   option "with-build-debug", "Configures ccls to be built in debug mode"
