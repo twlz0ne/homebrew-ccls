@@ -40,6 +40,9 @@ before_install:
     fi
 
 script:
+  - echo "================================="
+  - brew info ccls
+  - ls "$HOMEBREW_CACHE"
   # ==> brew doctor
   # Please note that these warnings are just used to help the Homebrew maintainers
   # with debugging if you file an issue. If everything you use Homebrew for is
