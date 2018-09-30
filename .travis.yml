@@ -7,9 +7,9 @@ matrix:
     - env: OSX=10.11
       compiler: clang
       osx_image: xcode8
-    - env: OSX=10.12
-      compiler: clang
-      osx_image: xcode9.2
+    # - env: OSX=10.12
+    #   compiler: clang
+    #   osx_image: xcode9.2
 
 cache:
   directories:
@@ -42,7 +42,6 @@ before_install:
 script:
   - echo "================================="
   - brew info ccls
-  - ls "$HOMEBREW_CACHE"
   # ==> brew doctor
   # Please note that these warnings are just used to help the Homebrew maintainers
   # with debugging if you file an issue. If everything you use Homebrew for is
