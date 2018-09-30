@@ -39,6 +39,6 @@ class Ccls < Formula
   end
 
   test do
-    system "#{bin}/ccls", "--test-unit"
+    system "#{bin}/ccls", "--help"
   end
 end
