@@ -56,7 +56,7 @@ script:
   - if [ "$OSX" == "10.12" ]; then
       brew test-bot --skip-setup;
     else
-      brew test-bot;
+      brew test-bot --fast;
     fi
 
 before_cache:
