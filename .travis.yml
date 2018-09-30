@@ -18,7 +18,7 @@ cache:
 branches:
   only:
     - master
-
+    
 before_install:
   - sudo chown -R "$USER" "$(brew --repo)"
   - travis_retry brew update
@@ -55,3 +55,7 @@ script:
     else
       brew test-bot;
     fi
+
+before_cache:
+  - brew cleanup -s
+  - brew cask cleanup
