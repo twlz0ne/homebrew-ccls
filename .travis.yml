@@ -43,7 +43,6 @@ script:
   - echo "================================="
   - brew info ccls
   - brew config
-  - ls -la /usr/local/opt/ccls
   # ==> brew doctor
   # Please note that these warnings are just used to help the Homebrew maintainers
   # with debugging if you file an issue. If everything you use Homebrew for is
@@ -57,5 +56,5 @@ script:
   - if [ "$OSX" == "10.12" ]; then
       brew test-bot --skip-setup;
     else
-      brew test-bot --fast;
+      brew test-bot;
     fi
