@@ -7,9 +7,9 @@ matrix:
     - env: OSX=10.11
       compiler: clang
       osx_image: xcode8
-    # - env: OSX=10.12
-    #   compiler: clang
-    #   osx_image: xcode9.2
+    - env: OSX=10.12
+      compiler: clang
+      osx_image: xcode9.2
 
 cache:
   directories:
