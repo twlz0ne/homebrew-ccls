@@ -59,3 +59,8 @@ script:
     else
       brew test-bot;
     fi
+  - echo ">>> after test-bot"
+
+before_cache:
+  - echo ">>> before_cache"
+  - brew list --versions
