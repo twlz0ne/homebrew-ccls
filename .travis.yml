@@ -64,3 +64,6 @@ script:
     else
       brew test-bot;
     fi
+  - brew install $(brew ruby -e "puts ARGV[0].f.path" ccls)
+  - brew list --versions ccls
+  - ccls --version
