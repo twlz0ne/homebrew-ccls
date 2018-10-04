@@ -26,6 +26,7 @@ before_install:
   - mkdir -p "$HOMEBREW_TAP_DIR"
   - rm -rf "$HOMEBREW_TAP_DIR"
   - ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+  # FIX:
   # ==> brew doctor
   # Please note that these warnings are just used to help the Homebrew maintainers
   # with debugging if you file an issue. If everything you use Homebrew for is
@@ -40,10 +41,14 @@ before_install:
     fi
 
 script:
-  - echo "================================="
-  - brew info ccls
-  - brew config
-  # - brew tap twlz0ne/homebrew-test-bot
+  # FIX:
+  # ==> brew audit twlz0ne/ccls/ccls --online
+  # Error: 1 problem in 1 formula detected
+  # twlz0ne/ccls/ccls:
+  #   * stable version should not decrease (from 0.20180913 to 0.20180812)
+  # ==> FAILED
+  - brew tap twlz0ne/homebrew-test-bot
+  # FIX:
   # ==> brew doctor
   # Please note that these warnings are just used to help the Homebrew maintainers
   # with debugging if you file an issue. If everything you use Homebrew for is
@@ -59,8 +64,7 @@ script:
     else
       brew test-bot;
     fi
-  - echo ">>> after test-bot"
-
-before_cache:
-  - echo ">>> before_cache"
-  - brew list --versions
+  - echo "================================="
+  - brew install $(brew ruby -e "puts ARGV[0].f.path" ccls)
+  - brew list --versions ccls
+  - ccls --version
