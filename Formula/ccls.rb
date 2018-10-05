@@ -33,6 +33,6 @@ class Ccls < Formula
   end
 
   test do
-    system "#{bin}/ccls", "--help"
+    system "#{bin}/ccls", "--version"
   end
 end

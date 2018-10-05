@@ -65,6 +65,8 @@ script:
       brew test-bot;
     fi
   - echo "================================="
-  - brew install $(brew ruby -e "puts ARGV[0].f.path" ccls)
+  # - brew install $(brew ruby -e "puts ARGV[0].f.path" ccls)
+  - brew install ccls
   - brew list --versions ccls
-  - ccls --version
+  - brew cat ccls
+  # - brew test ccls
