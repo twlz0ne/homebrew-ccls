@@ -4,9 +4,6 @@ os: osx
 
 matrix:
   include:
-    - env: OSX=10.11
-      compiler: clang
-      osx_image: xcode8
     - env: OSX=10.12
       compiler: clang
       osx_image: xcode9.2
@@ -26,19 +23,6 @@ before_install:
   - mkdir -p "$HOMEBREW_TAP_DIR"
   - rm -rf "$HOMEBREW_TAP_DIR"
   - ln -s "$PWD" "$HOMEBREW_TAP_DIR"
-  # FIX:
-  # ==> brew doctor
-  # Please note that these warnings are just used to help the Homebrew maintainers
-  # with debugging if you file an issue. If everything you use Homebrew for is
-  # working fine: please don't worry or file an issue; just ignore this. Thanks!
-  # Warning: Your XQuartz (2.7.9) is outdated.
-  # Please install XQuartz 2.7.11 (or delete the current version).
-  # XQuartz can be updated using Homebrew Cask by running
-  #   brew cask reinstall xquartz
-  # ==> FAILED
-  - if [ "$OSX" == "10.11" ]; then
-      brew cask reinstall xquartz;
-    fi
 
 script:
   # FIX:
@@ -48,22 +32,8 @@ script:
   #   * stable version should not decrease (from 0.20180913 to 0.20180812)
   # ==> FAILED
   - brew tap twlz0ne/homebrew-test-bot
-  # FIX:
-  # ==> brew doctor
-  # Please note that these warnings are just used to help the Homebrew maintainers
-  # with debugging if you file an issue. If everything you use Homebrew for is
-  # working fine: please don't worry or file an issue; just ignore this. Thanks!
-  # Warning: The following directories do not exist:
-  # /usr/local/var/homebrew/linked
-  # You should create these directories and change their ownership to your account.
-  #   sudo mkdir -p /usr/local/var/homebrew/linked
-  #   sudo chown -R $(whoami) /usr/local/var/homebrew/linked
-  # ==> FAILED
-  - if [ "$OSX" == "10.12" ]; then
-      brew test-bot --skip-setup;
-    else
-      brew test-bot;
-    fi
+  #
+  - brew test-bot --skip-setup
   - brew install ccls
   - brew list --versions ccls
   - brew test ccls

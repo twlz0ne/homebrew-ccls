@@ -1,21 +1,17 @@
 class Ccls < Formula
   desc "C/C++ language server"
   homepage "https://github.com/MaskRay/ccls"
-  if MacOS.version <= :el_capitan
-    url "https://github.com/MaskRay/ccls.git",
-           :tag      => "0.20180812",
-           :revision => "06aa25233567ae16a58a6f5237aacfd9e02aa29d"
-  else
-    url "https://github.com/MaskRay/ccls.git",
-           :tag      => "0.20181225.8",
-           :revision => "d275ed570d7ea26dd8d762b8d82bc4e295971154"
-  end
+  url "https://github.com/MaskRay/ccls.git",
+      :tag      => "0.20181225.8",
+      :revision => "d275ed570d7ea26dd8d762b8d82bc4e295971154"
   head "https://github.com/MaskRay/ccls.git"
 
   option "with-build-debug", "Configures ccls to be built in debug mode"
   option "without-system-clang", "Downloading Clang from http://releases.llvm.org/ during the configure process"
   option "with-asan", "Compile with address sanitizers"
 
+  # error: 'shared_timed_mutex' is unavailable: introduced in macOS 10.12
+  depends_on :macos => :sierra
   depends_on "cmake" => :build
   depends_on "llvm" => :build
 
