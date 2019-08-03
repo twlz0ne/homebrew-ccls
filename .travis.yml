@@ -23,6 +23,15 @@ before_install:
   - mkdir -p "$HOMEBREW_TAP_DIR"
   - rm -rf "$HOMEBREW_TAP_DIR"
   - ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+  # FIX:
+  # $ gem install bundler -v '< 2'
+  # ERROR:  Could not find a valid gem 'bundler' (< 2), here is why:
+  #           Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv2/v3 read
+  # server hello A: tlsv1 alert protocol version (https://rubygems.org/specs.4.8.gz)
+  # The command "gem install bundler -v '< 2'" failed and exited with 2 during .
+  - brew install openssl
+  - brew tap raggi/ale
+  - brew install openssl-osx-ca
 
 script:
   # FIX:
